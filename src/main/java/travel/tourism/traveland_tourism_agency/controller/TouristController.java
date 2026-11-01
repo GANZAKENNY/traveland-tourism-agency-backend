@@ -1,16 +1,25 @@
-package travel.tourism.rw.controller;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import travel.tourism.rw.domain.Tourist;
-import travel.tourism.rw.service.TourGuideService;
-import travel.tourism.rw.service.TouristService;
+package travel.tourism.traveland_tourism_agency.controller;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import travel.tourism.traveland_tourism_agency.domain.Tourist;
+import travel.tourism.traveland_tourism_agency.service.TouristGuideService;
+import travel.tourism.traveland_tourism_agency.service.TouristService;
 
 @RestController
 @RequestMapping("/api/tourists")
@@ -20,7 +29,7 @@ public class TouristController {
     private TouristService touristService;
 
     @Autowired
-    private TourGuideService tourGuideService;
+    private TouristGuideService tourGuideService;
 
     @PostMapping("/save")
     public ResponseEntity<String> saveTourist(@RequestBody Tourist tourist) {
