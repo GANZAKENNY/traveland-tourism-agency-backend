@@ -1,0 +1,753 @@
+{
+  "info": {
+    "name": "traveland-tourism-agency-midterm",
+    "description": "Ganza Kenny - 27550 - Travel and Tourism Agency",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Part A",
+      "item": [
+        {
+          "name": "A2 - save language",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/languages/save",
+            "description": "201 Language saved successfully",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Kinyarwanda\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "A2 - save vehicle",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/vehicles/save",
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fleetNumber\": 5,\n  \"name\": \"Toyota Prado\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "A2 - save tour guide",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/tour-guides/save",
+            "description": "vehicle by fleetNumber, languages by id",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Patrick\",\n  \"lastName\": \"Nshuti\",\n  \"phone\": \"0788444444\",\n  \"vehicle\": {\n    \"fleetNumber\": 5\n  },\n  \"languages\": [\n    {\n      \"id\": \"{{englishId}}\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "A2 - save tourist",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/tourists/save",
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Lars\",\n  \"lastName\": \"Muller\",\n  \"passportNumber\": \"DE999000\",\n  \"nationality\": \"German\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "A2 - save tour booking",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/tour-bookings/save",
+            "description": "tourist by passportNumber, tour guide by id. 201 Tour booking saved successfully",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tourDate\": \"2026-12-10\",\n  \"destination\": \"Volcanoes National Park\",\n  \"travellers\": 2,\n  \"tourist\": {\n    \"passportNumber\": \"{{passportNumber}}\"\n  },\n  \"tourGuide\": {\n    \"id\": \"{{alineId}}\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "A2 - all tour bookings",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/tour-bookings/all",
+            "description": ""
+          }
+        },
+        {
+          "name": "A2 - tour booking by id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/tour-bookings/{{bookedId}}",
+            "description": ""
+          }
+        },
+        {
+          "name": "A2 - tour booking by id (404)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/tour-bookings/{{unknownId}}",
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "\"404 The tour booking with that id does not exist\"",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "A2 - all languages",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/languages/all",
+            "description": ""
+          }
+        },
+        {
+          "name": "A2 - all vehicles",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/vehicles/all",
+            "description": ""
+          }
+        },
+        {
+          "name": "A2 - all tour guides",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/tour-guides/all",
+            "description": ""
+          }
+        },
+        {
+          "name": "A2 - all tourists",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/tourists/all",
+            "description": ""
+          }
+        },
+        {
+          "name": "A2 - update tourist",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/tourists/update/{{touristId}}",
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Emily\",\n  \"lastName\": \"Johnson\",\n  \"nationality\": \"American\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "A2 - update tour booking",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/tour-bookings/update/{{bookedId}}",
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tourDate\": \"2026-11-05\",\n  \"destination\": \"Volcanoes National Park\",\n  \"travellers\": 3\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "A2 - update tour booking (404)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/tour-bookings/update/{{unknownId}}",
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tourDate\": \"2026-11-05\",\n  \"destination\": \"X\",\n  \"travellers\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "A2 - delete tourist (404)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": "{{baseUrl}}/tourists/delete/{{unknownId}}",
+            "description": ""
+          }
+        },
+        {
+          "name": "A2 - delete vehicle (404)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": "{{baseUrl}}/vehicles/delete/{{unknownId}}",
+            "description": ""
+          }
+        }
+      ]
+    },
+    {
+      "name": "Part B",
+      "item": [
+        {
+          "name": "B1 - tourists by nationality",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/tourists/by-nationality?nationality=kenyan",
+            "description": ""
+          }
+        },
+        {
+          "name": "B1 - tourists by nationality (empty)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/tourists/by-nationality?nationality=martian",
+            "description": ""
+          }
+        },
+        {
+          "name": "B2 - tour bookings by status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/tour-bookings/by-status?status=BOOKED",
+            "description": ""
+          }
+        },
+        {
+          "name": "B3 - tour bookings between",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/tour-bookings/between?start=2026-10-01&end=2026-10-31",
+            "description": ""
+          }
+        }
+      ]
+    },
+    {
+      "name": "Part C",
+      "item": [
+        {
+          "name": "C1 - tour guides by language",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/tour-guides/by-language?name=english",
+            "description": ""
+          }
+        },
+        {
+          "name": "C2 - free vehicles",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/vehicles/free",
+            "description": ""
+          }
+        },
+        {
+          "name": "C3 - unused languages",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/languages/unused",
+            "description": ""
+          }
+        },
+        {
+          "name": "C4 - tourists of a tour guide",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/tourists/of-tour-guide/{{tourGuideId}}",
+            "description": ""
+          }
+        },
+        {
+          "name": "C4 - tourists of a tour guide (404)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/tourists/of-tour-guide/{{unknownId}}",
+            "description": ""
+          }
+        }
+      ]
+    },
+    {
+      "name": "Part D",
+      "item": [
+        {
+          "name": "D1 - save tour booking (201, status forced to BOOKED)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/tour-bookings/save",
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tourDate\": \"2026-12-15\",\n  \"destination\": \"Nyungwe Forest\",\n  \"travellers\": 2,\n  \"status\": \"CONDUCTED\",\n  \"tourist\": {\n    \"passportNumber\": \"{{passportNumber}}\"\n  },\n  \"tourGuide\": {\n    \"id\": \"{{ericId}}\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "D1 - past date (400)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/tour-bookings/save",
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tourDate\": \"2026-01-01\",\n  \"destination\": \"X\",\n  \"travellers\": 1,\n  \"tourist\": {\n    \"passportNumber\": \"{{passportNumber}}\"\n  },\n  \"tourGuide\": {\n    \"id\": \"{{alineId}}\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "D1 - guide already booked (409)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/tour-bookings/save",
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tourDate\": \"2026-11-05\",\n  \"destination\": \"X\",\n  \"travellers\": 1,\n  \"tourist\": {\n    \"passportNumber\": \"{{passportNumber}}\"\n  },\n  \"tourGuide\": {\n    \"id\": \"{{alineId}}\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "D2 - status BOOKED to PAID (200)",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": "{{baseUrl}}/tour-bookings/{{bookedId}}/status?status=PAID",
+            "description": ""
+          }
+        },
+        {
+          "name": "D2 - status CONDUCTED to BOOKED (400)",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": "{{baseUrl}}/tour-bookings/{{conductedId}}/status?status=BOOKED",
+            "description": ""
+          }
+        },
+        {
+          "name": "D2 - status unknown id (404)",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": "{{baseUrl}}/tour-bookings/{{unknownId}}/status?status=PAID",
+            "description": ""
+          }
+        },
+        {
+          "name": "D3 - add language to tour guide (200)",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": "{{baseUrl}}/tour-guides/{{alineId}}/languages/{{frenchId}}",
+            "description": ""
+          }
+        },
+        {
+          "name": "D3 - already has that language (409)",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": "{{baseUrl}}/tour-guides/{{tourGuideId}}/languages/{{englishId}}",
+            "description": ""
+          }
+        },
+        {
+          "name": "D3 - unknown language (404)",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": "{{baseUrl}}/tour-guides/{{tourGuideId}}/languages/{{unknownId}}",
+            "description": ""
+          }
+        },
+        {
+          "name": "D4 - move tour guide to vehicle 4 (200)",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": "{{baseUrl}}/tour-guides/{{ericId}}/vehicle?fleetNumber=4",
+            "description": ""
+          }
+        },
+        {
+          "name": "D4 - vehicle taken (409)",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": "{{baseUrl}}/tour-guides/{{ericId}}/vehicle?fleetNumber=1",
+            "description": ""
+          }
+        },
+        {
+          "name": "D4 - unknown fleetNumber (404)",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": "{{baseUrl}}/tour-guides/{{ericId}}/vehicle?fleetNumber=99",
+            "description": ""
+          }
+        }
+      ]
+    },
+    {
+      "name": "Part E",
+      "item": [
+        {
+          "name": "E1 - write tour expense (201)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/tour-expenses/save?tourBookingId={{conductedId}}",
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"item\": \"Park entry fee\",\n  \"notes\": \"Akagera National Park, two adults\",\n  \"amountRwf\": 100000\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "E1 - not CONDUCTED (400)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/tour-expenses/save?tourBookingId={{bookedId}}",
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"item\": \"Park entry fee\",\n  \"notes\": \"Akagera National Park, two adults\",\n  \"amountRwf\": 100000\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "E1 - unknown tour booking (404)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/tour-expenses/save?tourBookingId={{unknownId}}",
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"item\": \"Park entry fee\",\n  \"notes\": \"Akagera National Park, two adults\",\n  \"amountRwf\": 100000\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "E2 - tour expense history of a tourist",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/tour-expenses/tourist/{{passportNumber}}",
+            "description": ""
+          }
+        },
+        {
+          "name": "E3 - delete tour expense (200)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": "{{baseUrl}}/tour-expenses/delete/{{tourExpenseId}}",
+            "description": ""
+          }
+        },
+        {
+          "name": "E3 - delete tour expense (404)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": "{{baseUrl}}/tour-expenses/delete/{{unknownId}}",
+            "description": ""
+          }
+        },
+        {
+          "name": "E3 - delete tour booking with expenses (409)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": "{{baseUrl}}/tour-bookings/delete/{{conductedId}}",
+            "description": ""
+          }
+        }
+      ]
+    },
+    {
+      "name": "Part F",
+      "item": [
+        {
+          "name": "F1 - tour bookings per status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/tour-bookings/stats/by-status",
+            "description": ""
+          }
+        },
+        {
+          "name": "F2 - cancel day of tour guide",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": "{{baseUrl}}/tour-bookings/cancel-day?tourGuideId={{tourGuideId}}&date=2026-10-20",
+            "description": ""
+          }
+        }
+      ]
+    },
+    {
+      "name": "Bonus",
+      "item": [
+        {
+          "name": "Bonus - dashboard summary",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/dashboard/summary",
+            "description": ""
+          }
+        },
+        {
+          "name": "Bonus - tour bookings page",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/tour-bookings/page?page=0&size=5&sort=tourDate,desc",
+            "description": ""
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080/api"
+    },
+    {
+      "key": "languageId",
+      "value": "80f92ebf-0718-468b-bfb8-c6c8e3b896a8"
+    },
+    {
+      "key": "englishId",
+      "value": "ba219ac3-8058-4831-b521-338dd25ec63a"
+    },
+    {
+      "key": "frenchId",
+      "value": "70d2ed6a-9cf0-4497-a0d7-9baf8043fa4d"
+    },
+    {
+      "key": "vehicleId",
+      "value": "c860d70c-c5b2-4df2-b6b0-487c6faf80e7"
+    },
+    {
+      "key": "tourGuideId",
+      "value": "31838652-86b8-4022-bc36-92d0b82f8dab"
+    },
+    {
+      "key": "alineId",
+      "value": "b53c79ed-86b5-4bbd-82c2-1f4a7b8de3b7"
+    },
+    {
+      "key": "ericId",
+      "value": "be0aee11-b2e1-4cbf-a7ca-6df0f5bbb0fc"
+    },
+    {
+      "key": "touristId",
+      "value": "cee92d55-4737-4601-b7a8-ead5c2864d31"
+    },
+    {
+      "key": "passportNumber",
+      "value": "PC123456"
+    },
+    {
+      "key": "bookedId",
+      "value": "42f3d853-9db7-4168-ac45-884a0e5019ea"
+    },
+    {
+      "key": "conductedId",
+      "value": "20f85505-78e3-4347-88f8-c91abc9ecdeb"
+    },
+    {
+      "key": "tourExpenseId",
+      "value": "519325e1-f58d-4dcc-83b6-87c2accd4d4b"
+    },
+    {
+      "key": "unknownId",
+      "value": "00000000-0000-0000-0000-000000000000"
+    }
+  ]
+}
