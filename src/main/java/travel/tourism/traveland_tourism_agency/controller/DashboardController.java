@@ -1,4 +1,6 @@
-package travel.tourism.rw.controller;
+package travel.tourism.traveland_tourism_agency.controller; 
+
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -6,9 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import travel.tourism.rw.service.DashboardService;
 
-import java.util.Map;
+import travel.tourism.traveland_tourism_agency.service.DashboardService;
 
 @RestController
 @RequestMapping("/api/dashboard")
